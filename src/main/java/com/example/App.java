@@ -1,16 +1,18 @@
 package com.example;
 
+import java.sql.Date;
+
 /**
  * Hello world!
  *
  */
 public class App {
+
     public static void main(String[] args) {
-        PSQLConnection connection = new PSQLConnection();
-        connection.connect();
+        ToDoManager toDoManager = new ToDoManager();
 
-        System.out.println("Hello World!");
+        ToDo todo = new ToDo("Learn Java", new Date(System.currentTimeMillis()));
+        toDoManager.createToDo(todo);
 
-        connection.close();
     }
 }

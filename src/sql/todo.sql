@@ -1,0 +1,11 @@
+CREATE TABLE todos (
+  id SERIAL PRIMARY KEY,
+  text VARCHAR(255) NOT NULL,
+  done BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO
+  todo (task, done, created_at)
+VALUES
+  ('Learn Java', 'false', '2021-12-20');
