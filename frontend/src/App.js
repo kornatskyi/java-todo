@@ -22,8 +22,8 @@ function App() {
 
     const createdTodo = await createTodo(task);
     console.log(createdTodo);
-    // setTasks([...tasks, task]);
-    // input.current.value = "";
+    setTasks([...tasks, createdTodo]);
+    input.current.value = "";
   };
 
   const handleDone = (task) => {

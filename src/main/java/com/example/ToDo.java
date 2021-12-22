@@ -8,6 +8,11 @@ public class ToDo {
     private boolean done = false;
     private Date date;
 
+    public ToDo(String text) {
+        this.text = text;
+        this.date = new Date(System.currentTimeMillis());
+    }
+
     public ToDo(String text, Date date) {
         this.text = text;
         this.date = date;

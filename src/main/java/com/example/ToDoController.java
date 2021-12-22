@@ -5,7 +5,10 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +33,14 @@ public class ToDoController {
     }
 
     @PostMapping("/todo/add")
+    @CrossOrigin(origins = "http://localhost:3000")
     @ResponseBody
-    public ToDo createToDo(CorsRegistry registry, @RequestBody ToDo todo) {
+    public ToDo createToDo(CorsRegistry registry, @RequestBody JsonNode requestBody) {
+
+        JsonNode body = requestBody.get("body");
+
+        ToDo todo = new ToDo(body.get("text").toString());
+
         registry.addMapping("/**").allowedOrigins("*");
 
         System.out.println(todo.getText());
