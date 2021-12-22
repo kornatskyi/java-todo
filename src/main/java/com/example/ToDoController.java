@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloWorld {
+public class ToDoController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
@@ -16,6 +16,7 @@ public class HelloWorld {
     @GetMapping("/hello-world")
     @ResponseBody
     public Greeting sayHello(@RequestParam(name = "name", required = false, defaultValue = "Stranger") String name) {
+
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
