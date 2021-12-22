@@ -1,0 +1,17 @@
+<web-app version="1"  >
+
+    <display-name>ToDo Application</display-name>
+
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>
+            com.example.api.HelloWorld</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+ 
+    
+</web-app>

@@ -1,5 +1,7 @@
 package com.example;
 
+// import com.example.api.HelloWorld;
+
 import java.sql.Date;
 
 /**
@@ -12,7 +14,12 @@ public class App {
         ToDoManager toDoManager = new ToDoManager();
 
         ToDo todo = new ToDo("Learn Java", new Date(System.currentTimeMillis()));
-        toDoManager.createToDo(todo);
+
+        // /toDoManager.createToDo(todo);
+        // HelloWorld helloWorld = new HelloWorld();
+        System.getProperty("java.class.path");
+
+        System.out.println(System.getProperty("java.class.path"));
 
     }
 }

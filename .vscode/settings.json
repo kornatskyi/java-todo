@@ -1,3 +1,21 @@
 {
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.dependency.packagePresentation": "hierarchical",
+  "java.dependency.syncWithFolderExplorer": true,
+  "tomcat.customEnv": [
+    {
+      "environmentVariable": "JAVA_HOME",
+      "value": "/usr/lib/jvm/jdk-11.0.12"
+    }
+  ],
+  "maven.terminal.customEnv": [
+    {
+      "environmentVariable": "JAVA_HOME",
+      "value": "/usr/lib/jvm/jdk-11.0.12"
+    }
+  ],
+  "[env]": {
+    "JAVA_HOME": "/usr/lib/jvm/jdk-11.0.12",
+    "CLASSPATH": "/usr/local/algs4/algs4.jar:/home/bohdan/Servers/apache-tomcat-10.0.14/bin/bootstrap.jar:/home/bohdan/Servers/apache-tomcat-10.0.14/bin/tomcat-juli.jar:/home/bohdan/Servers/apache-tomcat-10.0.14/lib/*:"
+  }
 }
