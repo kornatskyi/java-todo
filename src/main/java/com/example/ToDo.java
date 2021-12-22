@@ -13,6 +13,12 @@ public class ToDo {
         this.date = date;
     }
 
+    public ToDo(String text, boolean done, Date date) {
+        this.text = text;
+        this.done = done;
+        this.date = date;
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }

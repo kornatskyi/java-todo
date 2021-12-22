@@ -6,6 +6,6 @@ CREATE TABLE todos (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO
-  todo (task, done, created_at)
+  todos (text, done)
 VALUES
-  ('Learn Java', 'false', '2021-12-20');
+  ('But milk', 'false');

@@ -36,21 +36,8 @@ public class PSQLConnection {
         System.out.println("Connection closed");
     }
 
-    void query(String query) {
-
-        // Database response
-        int statement;
-
-        try {
-            statement = this.connection.createStatement().executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Query failed");
-            return;
-        }
-
-        System.out.println(statement + " rows affected");
-        System.out.println("Query successful");
+    Connection getConnection() {
+        return this.connection;
     }
 
 }
