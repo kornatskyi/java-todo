@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,22 +49,18 @@ public class ToDoController {
         return todo;
     }
 
-    @DeleteMapping("/todo/delete")
+    @DeleteMapping("/todo/{text}")
     @CrossOrigin(origins = "http://localhost:3000")
     @ResponseBody
-    public ToDo deleteToDo(CorsRegistry registry, @RequestBody JsonNode requestBody) {
-
-        JsonNode body = requestBody.get("body");
-
-        ToDo todo = new ToDo(body.get("text").toString());
+    public String deleteToDo(CorsRegistry registry, @PathVariable(value = "text") String text) {
 
         registry.addMapping("/**").allowedOrigins("*");
 
-        System.out.println(todo.getText());
+        System.out.println(text);
 
         ToDoManager toDoManager = new ToDoManager();
-        toDoManager.deleteToDo(todo);
-        return todo;
+        toDoManager.deleteToDo(text);
+        return "Delete to do with text = " + text;
     }
 
 }

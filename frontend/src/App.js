@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { AiOutlineEdit } from "react-icons/ai";
-import { createTodo, getTodos } from "./apiCalls";
+import { createTodo, deleteToDo, getTodos } from "./apiCalls";
 
 class Task {
   constructor(text = "new task", done = false, date = null) {
@@ -29,6 +29,12 @@ function App() {
   const handleDone = (task) => {
     setTask(new Task(task.text, !task.done, task.date));
     task.done = !task.done;
+  };
+
+  const handleDelete = async (text) => {
+    const response = await deleteToDo(text);
+    console.log(response);
+    setTasks(tasks.filter((t) => t.text !== text));
   };
 
   useEffect(() => {
@@ -87,7 +93,10 @@ function App() {
                   </span>
                   <span className="text-xs">{task.date}</span>
                 </span>
-                <HiOutlineTrash className="ml-2 hover:text-red-500 cursor-pointer" />
+                <HiOutlineTrash
+                  className="ml-2 hover:text-red-500 cursor-pointer"
+                  onClick={() => handleDelete(task.text)}
+                />
               </div>
             );
           })}

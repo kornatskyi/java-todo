@@ -13,3 +13,8 @@ export const createTodo = (todo) => {
 
     }).then(res => res.data);
 }
+
+
+export const deleteToDo = (text) => {
+    return axios.delete(API_URL + '/todo/' + text).then(res => res.data)
+}
