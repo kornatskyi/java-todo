@@ -59,4 +59,20 @@ public class ToDoManager {
 
     }
 
+    public void deleteToDo(ToDo todo) {
+        Connection connection = new PSQLConnection().getConnection();
+
+        try {
+            connection
+                    .createStatement().executeUpdate(
+                            "DELETE FROM todos WHERE text = '" + todo.getText() + "';");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("ToDo is deleted");
+
+    }
+
 }

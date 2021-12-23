@@ -1,14 +1,12 @@
 package com.example;
 
-import java.sql.Date;
 import java.util.concurrent.atomic.AtomicLong;
-
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +45,24 @@ public class ToDoController {
 
         ToDoManager toDoManager = new ToDoManager();
         toDoManager.createToDo(todo);
+        return todo;
+    }
+
+    @DeleteMapping("/todo/delete")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @ResponseBody
+    public ToDo deleteToDo(CorsRegistry registry, @RequestBody JsonNode requestBody) {
+
+        JsonNode body = requestBody.get("body");
+
+        ToDo todo = new ToDo(body.get("text").toString());
+
+        registry.addMapping("/**").allowedOrigins("*");
+
+        System.out.println(todo.getText());
+
+        ToDoManager toDoManager = new ToDoManager();
+        toDoManager.deleteToDo(todo);
         return todo;
     }
 
